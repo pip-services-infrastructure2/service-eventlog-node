@@ -1,1 +1,1 @@
-export { EventLogHttpServiceV1 } from './EventLogHttpServiceV1';
+export { EventLogCommandableHttpServiceV1 } from './EventLogCommandableHttpServiceV1';
