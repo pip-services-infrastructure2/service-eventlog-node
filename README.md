@@ -93,7 +93,7 @@ Example of microservice configuration
 
 - descriptor: "service-eventlog:controller:default:default:1.0"
 
-- descriptor: "service-eventlog:service:http:default:1.0"
+- descriptor: "service-eventlog:service:commandable-http:default:1.0"
   connection:
     protocol: "http"
     host: "0.0.0.0"
