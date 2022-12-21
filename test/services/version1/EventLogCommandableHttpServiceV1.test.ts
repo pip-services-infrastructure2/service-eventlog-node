@@ -10,7 +10,7 @@ import { EventLogTypeV1 } from '../../../src/data/version1/EventLogTypeV1';
 import { EventLogSeverityV1 } from '../../../src/data/version1/EventLogSeverityV1';
 import { EventLogMemoryPersistence } from '../../../src/persistence/EventLogMemoryPersistence';
 import { EventLogController } from '../../../src/logic/EventLogController';
-import { EventLogHttpServiceV1 } from '../../../src/services/version1/EventLogHttpServiceV1';
+import { EventLogCommandableHttpServiceV1 } from '../../../src/services/version1/EventLogCommandableHttpServiceV1';
 
 let httpConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
@@ -33,8 +33,8 @@ let EVENT2: SystemEventV1 = new SystemEventV1(
     'test error'
 );
 
-suite('EventLogHttpServiceV1', ()=> {
-    let service: EventLogHttpServiceV1;
+suite('EventLogCommandableHttpServiceV1', ()=> {
+    let service: EventLogCommandableHttpServiceV1;
 
     let rest: any;
 
@@ -42,13 +42,13 @@ suite('EventLogHttpServiceV1', ()=> {
         let persistence = new EventLogMemoryPersistence();
         let controller = new EventLogController();
 
-        service = new EventLogHttpServiceV1();
+        service = new EventLogCommandableHttpServiceV1();
         service.configure(httpConfig);
 
         let references: References = References.fromTuples(
             new Descriptor('service-eventlog', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('service-eventlog', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-eventlog', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-eventlog', 'service', 'commandable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);

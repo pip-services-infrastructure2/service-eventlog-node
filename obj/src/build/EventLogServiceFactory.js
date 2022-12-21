@@ -7,7 +7,7 @@ const EventLogMongoDbPersistence_1 = require("../persistence/EventLogMongoDbPers
 const EventLogFilePersistence_1 = require("../persistence/EventLogFilePersistence");
 const EventLogMemoryPersistence_1 = require("../persistence/EventLogMemoryPersistence");
 const EventLogController_1 = require("../logic/EventLogController");
-const EventLogHttpServiceV1_1 = require("../services/version1/EventLogHttpServiceV1");
+const EventLogCommandableHttpServiceV1_1 = require("../services/version1/EventLogCommandableHttpServiceV1");
 class EventLogServiceFactory extends pip_services3_components_nodex_1.Factory {
     constructor() {
         super();
@@ -15,7 +15,7 @@ class EventLogServiceFactory extends pip_services3_components_nodex_1.Factory {
         this.registerAsType(EventLogServiceFactory.FilePersistenceDescriptor, EventLogFilePersistence_1.EventLogFilePersistence);
         this.registerAsType(EventLogServiceFactory.MongoDbPersistenceDescriptor, EventLogMongoDbPersistence_1.EventLogMongoDbPersistence);
         this.registerAsType(EventLogServiceFactory.ControllerDescriptor, EventLogController_1.EventLogController);
-        this.registerAsType(EventLogServiceFactory.HttpServiceDescriptor, EventLogHttpServiceV1_1.EventLogHttpServiceV1);
+        this.registerAsType(EventLogServiceFactory.HttpServiceDescriptor, EventLogCommandableHttpServiceV1_1.EventLogCommandableHttpServiceV1);
     }
 }
 exports.EventLogServiceFactory = EventLogServiceFactory;
@@ -24,5 +24,5 @@ EventLogServiceFactory.MemoryPersistenceDescriptor = new pip_services3_commons_n
 EventLogServiceFactory.FilePersistenceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-eventlog", "persistence", "file", "*", "1.0");
 EventLogServiceFactory.MongoDbPersistenceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-eventlog", "persistence", "mongodb", "*", "1.0");
 EventLogServiceFactory.ControllerDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-eventlog", "controller", "default", "*", "1.0");
-EventLogServiceFactory.HttpServiceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-eventlog", "service", "http", "*", "1.0");
+EventLogServiceFactory.HttpServiceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-eventlog", "service", "commandable-http", "*", "1.0");
 //# sourceMappingURL=EventLogServiceFactory.js.map
